@@ -16,5 +16,5 @@ The above code was part of the lab exercises for Practical C course of MITOCW
 
 # Compilation
 ```
-$ gcc -g -o0 -Wall lab1a.c lifegame.c -lncurses -o lab1a.o
+$ gcc -g -o0 -Wall lab1a.c lifegame.c -o lab1a.o
 ```
