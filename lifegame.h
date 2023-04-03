@@ -11,6 +11,7 @@
 #ifndef LIFEGAME_H_
 #define LIFEGAME_H_
 
+#include <ncurses.h>
 /* state constants */
 #define DEAD 0
 #define ALIVE 1
@@ -41,7 +42,7 @@ void set_cell_state(int x, int y, int state);
 void finalize_evolution(void);
 
 /* outputs the current world state to the console */
-void output_world(void);
+void output_world(WINDOW *win);
 
 /* functions to implement for Part B */
 void initialize_world_from_file(const char * filename);

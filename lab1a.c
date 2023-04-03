@@ -7,6 +7,7 @@
 
 /* include helper functions for game */
 #include "lifegame.h"
+#include <unistd.h>
 
 /* add whatever other includes here */
 
@@ -34,6 +35,17 @@ int main(int argc, char **argv)
 {
 	int n;
 
+	initscr();
+	cbreak();
+	noecho();
+	keypad(stdscr, TRUE);
+	// curs_set(0);
+	timeout(300);
+
+	WINDOW *win = newwin(LINES, COLS, 0, 0);
+	clear();
+	move(0, 0);
+	
 	/* TODO: initialize the world */
 	if (argc > 1 && argv[1])
 	{
@@ -43,12 +55,17 @@ int main(int argc, char **argv)
 		initialize_world();
 	}
 
-	for (n = 0; n < NUM_GENERATIONS; n++)
+	refresh();
+
+	for (n = 0; n < NUM_GENERATIONS; n++){
 		next_generation();
+		output_world(stdscr);
+		wrefresh(win);
+		usleep(100000);
+	}
+		
 
-	/* TODO: output final world state */
-	output_world();
-
+	endwin();
 
 	return 0;
 }

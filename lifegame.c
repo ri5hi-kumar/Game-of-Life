@@ -133,7 +133,7 @@ void finalize_evolution(void) {
 	}
 }
 
-void output_world(void) {
+void output_world(WINDOW *win) {
 	char worldstr[2*WORLDWIDTH+2];
 	int i, j;
 
@@ -142,17 +142,20 @@ void output_world(void) {
 	for (i = 1; i < 2*WORLDWIDTH; i++)
 		worldstr[i] = '-';
 	worldstr[2*WORLDWIDTH] = '+';
-	puts(worldstr);
+	// puts(worldstr);
+	mvwaddstr(win, 0, 0, worldstr);
 	for (i = 0; i <= 2*WORLDWIDTH; i+=2)
 		worldstr[i] = '|';
 	for (i = 0; i < WORLDHEIGHT; i++) {
 		for (j = 0; j < WORLDWIDTH; j++)
 			worldstr[2*j+1] = world[j][i] == ALIVE ? CHAR_ALIVE : CHAR_DEAD;
-		puts(worldstr);
+		// puts(worldstr);
+		mvwaddstr(win, j+1, 0, worldstr);
 	}
 	worldstr[0] = '+';
 	for (i = 1; i < 2*WORLDWIDTH; i++)
 		worldstr[i] = '-';
 	worldstr[2*WORLDWIDTH] = '+';
-	puts(worldstr);
+	// puts(worldstr);
+	mvwaddstr(win, j+1, 0, worldstr);
 }
