@@ -16,7 +16,7 @@ Some of the above code was given as part of the lab exercises for Practical C co
 
 # To install ncurses library
 ```
-$ gcc apt install libncurses5-dev
+$ apt install libncurses5-dev
 ```
 
 # Running
