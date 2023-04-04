@@ -12,7 +12,7 @@
 /* add whatever other includes here */
 
 /* number of generations to evolve the world */
-#define NUM_GENERATIONS 50
+// #define NUM_GENERATIONS 100
 
 /* functions to implement */
 
@@ -39,7 +39,7 @@ int main(int argc, char **argv)
 	cbreak();
 	noecho();
 	keypad(stdscr, TRUE);
-	// curs_set(0);
+	curs_set(0);
 	timeout(300);
 
 	WINDOW *win = newwin(LINES, COLS, 0, 0);
@@ -55,11 +55,11 @@ int main(int argc, char **argv)
 		initialize_world();
 	}
 
-	refresh();
+	wrefresh(win);
 
-	for (n = 0; n < NUM_GENERATIONS; n++){
+	while(1){
 		next_generation();
-		output_world(stdscr);
+		output_world(win);
 		wrefresh(win);
 		usleep(100000);
 	}
