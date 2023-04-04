@@ -12,9 +12,17 @@ as:
 3. A live cell with exactly two or three live neighbors lives.
 4. A dead cell with exactly three live neighbors becomes alive.
 
-The above code was part of the lab exercises for Practical C course of MITOCW
+Some of the above code was given as part of the lab exercises for Practical C course of MITOCW. I completed the functions added ncurses to it for making it more alive.
 
-# Compilation
+# To install ncurses library
 ```
-$ gcc -g -o0 -Wall lab1a.c lifegame.c -o lab1a.o
+$ gcc apt install libncurses5-dev
 ```
+
+# Running
+```
+$ make
+$ ./output
+```
+
+TODO: Removing collision with the boundary
